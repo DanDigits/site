@@ -1,0 +1,104 @@
+# https://gohugo.io/getting-started/configuration/
+# https://github.com/luizdepra/hugo-coder?tab=readme-ov-file
+# https://github.com/adityatelange/hugo-PaperMod/wiki/Features
+baseURL: ""
+languageCode: en-us
+title: Daniel's. dev blog
+theme: hugo-coder
+enableRobotsTXT: false
+enableEmoji: true
+
+markup:
+  highlight:
+    style: "gruvbox"
+
+minify:
+    disableXML: true
+    minifyOutput: false
+
+menu:
+  main:
+    - indentifier: Blog
+      name: Blog
+      url: /posts
+      weight: 1
+    - indentifier: categories
+      name: Categories
+      url: /categories
+      weight: 10
+    # - indentifier: tags
+    #   name: Tags
+    #   url: /tags
+    #   weight: 20
+    - indentifier: About
+      name: About
+      url: /about
+      weight: 100
+
+params:
+  author: Daniel
+  info: Aspiring developer
+  description: Daniels personal website
+  keywords:
+  since: 2024
+  colorScheme: "auto"
+  hideColorSchemeToggle: false
+  avatarurl: "images/square_me.jpg"
+  social:
+    - name: "Github"
+      icon: "fa fa-github fa-2x"
+      weight: 1
+      url: "https://github.com/dandigits"
+    - name: "LinkedIn"
+      icon: "fa fa-linkedin fa-2x"
+      weight: 1
+      url: "LINKEDIN_LINK"
+  plausibleAnalytics:
+    domain: "daniels.dev"
+    serverURL: "plausible.io"
+  # csp: UNCOMMENT ONCE PLAUSIBLE PARTIAL IN PLACE
+  #   scriptsrc:
+  #   - "'self'"
+  #   - "'https://plausible.io'"
+  #   connectsrc:
+  #   - "'self'"
+  #   - "'unsafe-inline'"
+  #   - "'https://plausible.io'"
+
+  # hidecolorschemetoggle: false
+  # homeInfoParams:
+  #   Title: "Welcome"
+  #   Content: to my blog. Currently under development
+  # socialIcons:
+  #   - name: github
+  #     url: "https://github.com/dandigits"
+  # cover:
+  #   linkFullImages: true
+  # ShowBreadCrumbs: true
+  # ShowReadingTime: true
+  # ShowPostNavLinks: true
+
+  matchers:
+    # cached with gzip compression enabled
+    - pattern: "^.+\\.(js|css|md|otf|svg|ttf|txt)$"
+      cacheControl: "max-age=604800, no-transform, public"
+      gzip: true
+    # cached with gzip compression disabled
+    - pattern: "^.+\\.(bmp|gif|ico|jpeg|jpg|mp3|mp4|pdf|png|rss|tiff|woff|woff2)$"
+      cacheControl: "max-age=604800, no-transform, public"
+      gzip: false
+    # sitemap gets a special content-type header
+    - pattern: "^sitemap\\.xml$"
+      contentType: "application/xml"
+      cacheControl: "max-age=3600, no-transform, public"
+      gzip: true
+    # cached with gzip compression enabled
+    - pattern: "^.+\\.(html|json|xml)$"
+      cacheControl: "max-age=3600, no-transform, public"
+      gzip: true
+
+deployment:
+  targets:
+    - name: daniels-dev
+      URL: "s3://daniels-dev?region=us-east-1"
+      cloudFrontDistributionID: CLOUDFRONT_ID
