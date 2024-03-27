@@ -34,7 +34,7 @@ jobs:
     - name: Update CloudFront Distribution
       run: sed -i "s/CLOUDFRONT_ID/${{ secrets.CLOUDFRONT }}/g" config.yaml
     - name: Update LinkedIn Link
-      run: sed -i "s/LINKEDIN_LINK/${{ secrets.LINKEDIN }}/g" config.yaml
+      run: sed -i "s|LINKEDIN_LINK|${{ secrets.LINKEDIN }}|g" config.yaml
     - name: Build
       run: hugo --gc -DEF --baseURL="https://daniels.dev"
     - name: Deploy to S3
