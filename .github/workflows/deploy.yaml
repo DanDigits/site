@@ -5,15 +5,17 @@ on:
 
 name: Deploy to production
 jobs:
-  # Infrastructure:
-  #   uses: Dandigits/site_infra@v1
-  #   secrets:
-  #     aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-  #     aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-  #     remote_state_bucket: ${{ secrets.STATE_BUCKET }}
-  #     remote_state_key: ${{ secrets.STATE_KEY }}
-  #     remote_state_table: ${{ secrets.STATE_TABLE }}
-  Deploy:
+  infrastructure:
+    uses: Dandigits/site_infra@v1
+    secrets:
+      aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      remote_state_bucket: ${{ secrets.STATE_BUCKET }}
+      remote_state_key: ${{ secrets.STATE_KEY }}
+      remote_state_table: ${{ secrets.STATE_TABLE }}
+  deploy:
+    needs:
+      - infrastructure
     runs-on: ubuntu-latest
     permissions:
       id-token: write
