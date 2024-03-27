@@ -13,7 +13,7 @@ jobs:
       remote_state_bucket: ${{ secrets.STATE_BUCKET }}
       remote_state_key: ${{ secrets.STATE_KEY }}
       remote_state_table: ${{ secrets.STATE_TABLE }}
-  deploy:
+  site:
     needs:
       - infrastructure
     runs-on: ubuntu-latest
