@@ -6,7 +6,7 @@ on:
 name: Deploy to production
 jobs:
   infrastructure:
-    uses: Dandigits/site_infra/.github/workflows/deployInfra.yaml@main
+    uses: DanDigits/site_infra@v0.9.1
     secrets:
       aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
       aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
